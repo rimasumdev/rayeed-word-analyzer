@@ -22,9 +22,19 @@ const Info = ({ text }) => {
         </h2>
       </div>
       <div className=" flex flex-col justify-center items-center h-full w-full bg-slate-50 p-4 space-y-2 rounded-lg">
-        {text.includes(".") ? (
+        {text.includes(".") ||
+        text.includes("!") ||
+        text.includes("?") ||
+        text.includes("।") ? (
           <p className="text-md md:text-2xl font-bold">
-            {text.split(".").length - 1}
+            {text.split(".").length -
+              1 +
+              text.split("!").length -
+              1 +
+              text.split("?").length -
+              1 +
+              text.split("।").length -
+              1}
           </p>
         ) : (
           <p className="text-md md:text-2xl font-bold">0</p>
