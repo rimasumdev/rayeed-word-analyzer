@@ -7,7 +7,7 @@ const Info = ({ text }) => {
       <GetLimit
         label="Words"
         text={
-          text.trim().length > 0
+          text.length > 0
             ? text.trim().split(" ").filter(Boolean).length.toString()
             : "0"
         }
