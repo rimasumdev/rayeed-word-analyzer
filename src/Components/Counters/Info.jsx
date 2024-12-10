@@ -54,7 +54,7 @@ const Info = ({ text }) => {
             <span className="text-xs text-slate-400">Left</span>
           </p>
         ) : (
-          <p className="text-md md:text-2xl font-bold">0</p>
+          <p className="text-md md:text-2xl font-bold">63206</p>
         )}
         <h2 className="text-sm md:text-2xl font-normal text-slate-400">
           Facebook
@@ -74,7 +74,7 @@ const Info = ({ text }) => {
             <span className="text-xs text-slate-400">Left</span>
           </p>
         ) : (
-          <p className="text-md md:text-2xl font-bold">0</p>
+          <p className="text-md md:text-2xl font-bold">280</p>
         )}
         <h2 className="text-sm md:text-2xl font-normal text-slate-400">
           Twitter
@@ -94,7 +94,7 @@ const Info = ({ text }) => {
             <span className="text-xs text-slate-400">Left</span>
           </p>
         ) : (
-          <p className="text-md md:text-2xl font-bold">0</p>
+          <p className="text-md md:text-2xl font-bold">2200</p>
         )}
         <h2 className="text-sm md:text-2xl font-normal text-slate-400">
           Instagram
