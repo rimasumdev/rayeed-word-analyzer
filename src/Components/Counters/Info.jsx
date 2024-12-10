@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 
 const Info = ({ text }) => {
   const count = {
@@ -31,20 +32,47 @@ const Info = ({ text }) => {
       <GetLimit label="Characters" count={count.characters} />
       <GetLimit label="Words" count={count.words} />
       <GetLimit label="Sentences" count={count.sentences} />
-      <GetLimit label="Facebook" count={count.facebook} left={true} />
-      <GetLimit label="Twitter" count={count.twitter} left={true} />
-      <GetLimit label="Instagram" count={count.instagram} left={true} />
+      <GetLimit
+        label="Facebook"
+        count={count.facebook}
+        left={true}
+        limit={63206}
+      />
+      <GetLimit label="Twitter" count={count.twitter} left={true} limit={280} />
+      <GetLimit
+        label="Instagram"
+        count={count.instagram}
+        left={true}
+        limit={2200}
+      />
     </div>
   );
 };
 
 export default Info;
 
-function GetLimit({ label, count, left }) {
+function GetLimit({ label, count, left, limit }) {
+  const [hasStartedCounting, setHasStartedCounting] = useState(false);
+
+  useEffect(() => {
+    if (count !== "0" && count !== "Limit Exceeded!") {
+      setHasStartedCounting(true);
+    } else {
+      setHasStartedCounting(false);
+    }
+  }, [count]);
+
+  const shouldShowLeft =
+    left && count !== "Limit Exceeded!" && hasStartedCounting;
+
   return (
-    <div className=" flex flex-col justify-center items-center h-full w-full bg-slate-50 p-4 space-y-2 rounded-lg">
-      <p className="text-md md:text-2xl font-bold">
-        {left ? (
+    <div className="flex flex-col justify-center items-center h-full w-full bg-slate-50 p-4 space-y-2 rounded-lg">
+      <p
+        className={`text-md md:text-2xl font-bold ${
+          count === "Limit Exceeded!" ? "text-red-500" : ""
+        }`}
+      >
+        {shouldShowLeft ? (
           <>
             {count} <span className="text-xs text-slate-400">Left</span>
           </>
@@ -67,4 +95,5 @@ GetLimit.propTypes = {
   label: PropTypes.string.isRequired,
   count: PropTypes.string.isRequired,
   left: PropTypes.bool,
+  limit: PropTypes.number,
 };
