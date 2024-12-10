@@ -13,7 +13,7 @@ const TextArea = ({ text, setText }) => {
         placeholder="Enter your text here"
       ></textarea>
       <div className="absolute bottom-0 right-0">
-        <div className=" flex justify-center items-center h-full w-full bg-slate-50 p-4 space-x-2">
+        <div className=" flex justify-center items-center h-full w-full bg-slate-50 p-4 space-x-2 rounded-br-lg">
           <h2 className="text-xs text-slate-500">Reading Time:</h2>
           {text.length > 0 ? (
             <p className="text-xs text-slate-700 font-bold">
