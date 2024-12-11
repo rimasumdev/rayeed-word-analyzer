@@ -38,6 +38,7 @@ const TextArea = ({ text, setText }) => {
         className="w-full h-full p-4 rounded-lg focus:outline-none overflow-y-auto resize-none"
         placeholder="Enter your text here"
         value={text}
+        name="text"
       ></textarea>
       {error && (
         <div className="absolute left-0 bottom-0 bg-slate-50 p-4 space-x-2 rounded-bl-lg">

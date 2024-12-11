@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
 
 const Info = ({ text }) => {
   const count = {
@@ -32,38 +31,22 @@ const Info = ({ text }) => {
       <GetLimit label="Characters" count={count.characters} />
       <GetLimit label="Words" count={count.words} />
       <GetLimit label="Sentences" count={count.sentences} />
-      <GetLimit
-        label="Facebook"
-        count={count.facebook}
-        left={true}
-        limit={63206}
-      />
-      <GetLimit label="Twitter" count={count.twitter} left={true} limit={280} />
-      <GetLimit
-        label="Instagram"
-        count={count.instagram}
-        left={true}
-        limit={2200}
-      />
+      <GetLimit label="Facebook" count={count.facebook} left={true} />
+      <GetLimit label="Twitter" count={count.twitter} left={true} />
+      <GetLimit label="Instagram" count={count.instagram} left={true} />
     </div>
   );
 };
 
 export default Info;
 
-function GetLimit({ label, count, left, limit }) {
-  const [hasStartedCounting, setHasStartedCounting] = useState(false);
-
-  useEffect(() => {
-    if (count !== "0" && count !== "Limit Exceeded!") {
-      setHasStartedCounting(true);
-    } else {
-      setHasStartedCounting(false);
-    }
-  }, [count]);
-
+function GetLimit({ label, count, left }) {
   const shouldShowLeft =
-    left && count !== "Limit Exceeded!" && hasStartedCounting;
+    count !== "Limit Exceeded!" &&
+    left &&
+    ((label === "Facebook" && count !== "63206") ||
+      (label === "Twitter" && count !== "280") ||
+      (label === "Instagram" && count !== "2200"));
 
   return (
     <div className="flex flex-col justify-center items-center h-full w-full bg-slate-50 p-4 space-y-2 rounded-lg">
